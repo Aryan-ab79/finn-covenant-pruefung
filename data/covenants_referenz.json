@@ -1,0 +1,147 @@
+{
+  "_hinweis": "Von Hand aus den Verträgen geprüft. Dient als Testorakel für die LLM-Extraktion.",
+  "vertraege": [
+    {
+      "datei": "Vertrag_1_Sparkasse_Investitionsdarlehen.pdf",
+      "vertrag": "Sparkasse Musterstadt – Investitionsdarlehen Nr. 4471 203 118",
+      "hat_financial_covenants": false,
+      "begruendung": "Keine Finanzkennzahl vereinbart; Absicherung über Ausfallbürgschaft der Stadt. Die Präambel nennt EK-Quote 28,4 % und dyn. Verschuldungsgrad 2,9 zum 31.12.2019 nur als Grundlage der Kreditentscheidung, nicht als Auflage.",
+      "covenants": [],
+      "pflichten_planjahr": [
+        {
+          "pflicht": "Vom Aufsichtsrat beschlossenen Wirtschaftsplan übermitteln (ohne Kennzahlenberechnung)",
+          "frist": "innerhalb eines Monats nach Beschluss, spätestens 31. Januar des Planjahres",
+          "paragraph": "§ 12 Abs. 1 lit. b, S. 6"
+        }
+      ],
+      "margenraster": null
+    },
+    {
+      "datei": "Vertrag_2_Foerderbank_Foerderdarlehen.pdf",
+      "vertrag": "Förderbank Musterland – Förderdarlehen Nr. FD-2022-08817",
+      "hat_financial_covenants": true,
+      "covenants": [
+        {
+          "kennzahl": "Wirtschaftliche Eigenkapitalquote",
+          "typ": "eigenkapitalquote",
+          "operator": ">=",
+          "grenzwert": 27.5,
+          "rundung_stellen": null,
+          "fundstelle_grenzwert": "§ 13 Abs. 1, S. 6",
+          "fundstelle_definition": "§ 1 Abs. 1 („Eigenkapital“, „Sonderposten“, „Wirtschaftliches Eigenkapital“, „Wirtschaftliche Eigenkapitalquote“), S. 1–2",
+          "definition_kurz": "(Eigenkapital + 50 % Sonderposten) / Bilanzsumme; Gesellschafterdarlehen und Rückstellungen zählen nicht zum EK, auch bei Rangrücktritt",
+          "parameter": {
+            "sonderposten_anteil": 0.5
+          }
+        }
+      ],
+      "pflichten_planjahr": [
+        {
+          "pflicht": "Beschlossenen Wirtschaftsplan mit Vorschau der Wirtschaftlichen Eigenkapitalquote zum Ende des Planjahres übermitteln",
+          "frist": "bis 31. Januar des Planjahres",
+          "paragraph": "§ 12 Abs. 1 lit. c, S. 5"
+        },
+        {
+          "pflicht": "Bei voraussichtlicher Unterschreitung: unverzüglich Gespräche über Maßnahmen (kein Kündigungsgrund)",
+          "frist": "unverzüglich",
+          "paragraph": "§ 13 Abs. 3, S. 6"
+        }
+      ],
+      "margenraster": null
+    },
+    {
+      "datei": "Vertrag_3_Landesbank_Investitionsdarlehen.pdf",
+      "vertrag": "Landesbank Mittelland – Investitionsdarlehen Nr. LBM-INV-2025-0412",
+      "hat_financial_covenants": true,
+      "covenants": [
+        {
+          "kennzahl": "Schuldendienstdeckungsgrad (DSCR)",
+          "typ": "dscr",
+          "operator": ">=",
+          "grenzwert": 1.3,
+          "rundung_stellen": 2,
+          "fundstelle_grenzwert": "§ 13 Abs. 1, S. 5",
+          "fundstelle_definition": "Anlage 3 Abs. 2–7, S. 13",
+          "definition_kurz": "(EBITDA − Ertragsteuern) / (Zinsen auf Finanzverbindlichkeiten ohne Aufzinsung + planmäßige Tilgung); Gesellschafterdarlehen zählen mit, auch bei Rangrücktritt; Sondertilgungen nicht",
+          "parameter": {
+            "gesellschafterdarlehen_einbeziehen": true,
+            "sondertilgung_einbeziehen": false,
+            "ebitda_aufzinsung_einbeziehen": true
+          }
+        }
+      ],
+      "pflichten_planjahr": [
+        {
+          "pflicht": "Wirtschaftsplan – auch als Entwurf vor Aufsichtsratsbeschluss – mit Berechnung des erwarteten Schuldendienstdeckungsgrades übermitteln",
+          "frist": "bis 15. Dezember des Vorjahres",
+          "paragraph": "§ 12 Abs. 1 lit. c, S. 5"
+        },
+        {
+          "pflicht": "Bei Plan-DSCR unter 1,30: Maßnahmen zur Einhaltung darlegen",
+          "frist": "innerhalb von 30 Tagen",
+          "paragraph": "§ 13 Abs. 3, S. 6"
+        }
+      ],
+      "margenraster": null
+    },
+    {
+      "datei": "Vertrag_4_Konsortialkredit.pdf",
+      "vertrag": "Konsortialkredit EUR 64 Mio. (Agent: Weserland Bank AG)",
+      "hat_financial_covenants": true,
+      "covenants": [
+        {
+          "kennzahl": "Eigenkapitalquote",
+          "typ": "eigenkapitalquote",
+          "operator": ">=",
+          "grenzwert": 30.0,
+          "rundung_stellen": 1,
+          "fundstelle_grenzwert": "§ 14 Abs. 1 lit. a, S. 6",
+          "fundstelle_definition": "§ 1 Abs. 1 („Eigenkapital“, „Eigenkapitalquote“), S. 2",
+          "definition_kurz": "Bilanzielles Eigenkapital / Bilanzsumme; ohne Sonderposten, Rückstellungen und Gesellschafterdarlehen (auch bei Rangrücktritt)",
+          "parameter": {
+            "sonderposten_anteil": 0.0
+          }
+        },
+        {
+          "kennzahl": "Dynamischer Verschuldungsgrad",
+          "typ": "dyn_verschuldungsgrad",
+          "operator": "<=",
+          "grenzwert": 3.5,
+          "rundung_stellen": 2,
+          "fundstelle_grenzwert": "§ 14 Abs. 1 lit. b, S. 7",
+          "fundstelle_definition": "§ 1 Abs. 1 („Dynamischer Verschuldungsgrad“, „EBITDA“, „Finanzverbindlichkeiten“, „Nettofinanzverbindlichkeiten“, „Liquide Mittel“, „Nachrangiges Gesellschafterdarlehen“), S. 2–3",
+          "definition_kurz": "(Finanzverbindlichkeiten − Liquide Mittel) / EBITDA; Nachrangige Gesellschafterdarlehen mit qualifiziertem Rangrücktritt sind ausgenommen",
+          "parameter": {
+            "nachrangige_gesellschafterdarlehen_einbeziehen": false,
+            "ebitda_aufzinsung_einbeziehen": true
+          }
+        }
+      ],
+      "pflichten_planjahr": [
+        {
+          "pflicht": "Wirtschaftsplan (Erfolgsplan, Planbilanz, Darlehensspiegel) mit indikativer Berechnung der Finanzkennzahlen an den Agent übermitteln",
+          "frist": "innerhalb von 30 Tagen nach seiner Aufstellung, spätestens 31. Dezember des Vorjahres",
+          "paragraph": "§ 13 Abs. 1 lit. c, S. 6"
+        }
+      ],
+      "margenraster": {
+        "kennzahl_typ": "dyn_verschuldungsgrad",
+        "paragraph": "§ 6 Abs. 3, S. 4",
+        "stufen": [
+          {
+            "bis_einschliesslich": 2.5,
+            "marge_prozent": 0.95
+          },
+          {
+            "bis_einschliesslich": 3.0,
+            "marge_prozent": 1.1
+          },
+          {
+            "bis_einschliesslich": null,
+            "marge_prozent": 1.25
+          }
+        ]
+      }
+    }
+  ]
+}
